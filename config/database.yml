@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: UTF-8
+  database: car_detail_dev
+  pool: 5
+  username: postgres
+  password: admin
+
+production:
+  adapter: postgresql
+  encoding: UTF-8
+  database: car_detail_test
+  pool: 5
+  username: postgres
+  password: admin

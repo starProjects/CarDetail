@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+  <title>CarDetail</title>
+  
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!-- CSS Global Compulsory-->
+  <link rel="shortcut icon" href="favicon.ico"> 
+  <%= javascript_include_tag "application"%>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= yield :css %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <!--=== Top ===-->    
+  <div class="top">
+      <div class="container">         
+          <ul class="loginbar pull-right">
+              <li>
+                  <i class="icon-globe"></i>
+                  <a>Languages</a>
+                  <ul class="lenguages">
+                    <li class="active">
+                      <a href="#">English <i class="icon-ok"></i></a> 
+                    </li>
+                    <li><a href="#">Spanish</a></li>
+                    <li><a href="#">Russian</a></li>
+                    <li><a href="#">German</a></li>
+                  </ul>
+              </li>
+
+              <% if user_signed_in? %>
+                <li class="devider"></li>   
+                <li>
+                  <%= link_to "Welcome back #{current_user.email}", dashboard_index_path %>
+                    <a href="logout">(Not You, Logout?)
+                    </a>
+                </li>
+              <% else %>
+                <li class="devider"></li>   
+                <li><a href="login">Login</a></li>   
+              <% end %>
+              
+          </ul>
+      </div>      
+  </div><!--/top-->
+  <!--=== End Top ===-->
+
+  <!--=== Header ===-->    
+  <div class="header">
+      <div class="navbar navbar-default" role="navigation">
+          <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="/">
+                    <img id="logo-header" src="/assets/logo1-blue.png" alt="Logo">
+                  </a>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse navbar-responsive-collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown active">
+                        <a href="/">
+                          Home
+                          <i class="icon-angle-down"></i>
+                        </a>
+                      </li>
+                      <% if !user_signed_in? %>
+                        <li class="dropdown">
+                          <a href="/register">
+                            Sign UP
+                            <i class="icon-angle-down"></i>
+                          </a>
+                        </li>
+                      <%end%>
+                      <li class="dropdown">
+                        <a href="/contact">
+                          Contact
+                          <i class="icon-angle-down"></i>
+                        </a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="/about">
+                          About
+                          <i class="icon-angle-down"></i>
+                        </a>
+                      </li>
+                                       
+                      <li class="hidden-sm"><a class="search"><i class="icon-search search-btn"></i></a></li>
+                  </ul>
+                  <div class="search-open">
+                      <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Search">
+                          <span class="input-group-btn">
+                              <button class="btn-u" type="button">Go</button>
+                          </span>
+                      </div><!-- /input-group -->
+                  </div>                
+              </div><!-- /navbar-collapse -->
+          </div>    
+      </div>    
+  </div><!--/header-->
+  <!--=== End Header ===-->
+
+  <%= yield :slider %>
+
+  <!--=== Breadcrumbs===-->
+  <div class="breadcrumbs margin-bottom-40">
+      <div class="container">
+          <h1 class="pull-left"><%= @page_title || "Missing Title" %></h1>
+          <ul class="pull-right breadcrumb">
+              <li><%= link_to "Home", root_path %></li>
+              <li class="active"><%= @page_title %></li>
+          </ul>
+      </div>
+  </div>
+  <!--breadcrumbs-->
+  <!--=== End Breadcrumbs ===-->
+
+  <!--=== Content Part ===-->
+  <div class="container">     
+    <div class="row margin-bottom-30">
+      <div class="col-md-12 md-margin-bottom-40">
+        <% if alert %>
+          <p class="alert"><%= alert %></p>
+        <%end%>
+        <%= yield %>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--=== Footer ===-->
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 md-margin-bottom-40">
+                  <!-- About -->
+              <div class="headline"><h2>About</h2></div>  
+          <p class="margin-bottom-25 md-margin-bottom-40">Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals.</p>  
+
+                <!-- Monthly Newsletter -->
+              <div class="headline"><h2>Monthly Newsletter</h2></div> 
+          <p>Subscribe to our newsletter and stay up to date with the latest news and deals!</p>
+          <form class="footer-subsribe">
+                      <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Email Address">                            
+                          <span class="input-group-btn">
+                              <button class="btn-u" type="button">Subscribe</button>
+                          </span>
+                      </div><!-- /input-group -->                    
+          </form>             
+        </div><!--/col-md-4-->  
+        
+        <div class="col-md-4 md-margin-bottom-40">
+                  <div class="posts">
+                      <div class="headline"><h2>Recent Blog Entries</h2></div>
+                      <dl class="dl-horizontal">
+                          <dt><a href="#"><img src="/assets/sliders/elastislide/6.jpg" alt="" /></a></dt>
+                          <dd>
+                              <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
+                          </dd>
+                      </dl>
+                      <dl class="dl-horizontal">
+                      <dt><a href="#"><img src="/assets/sliders/elastislide/10.jpg" alt="" /></a></dt>
+                          <dd>
+                              <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
+                          </dd>
+                      </dl>
+                      <dl class="dl-horizontal">
+                      <dt><a href="#"><img src="/assets/sliders/elastislide/11.jpg" alt="" /></a></dt>
+                          <dd>
+                              <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p> 
+                          </dd>
+                      </dl>
+                  </div>
+        </div><!--/col-md-4-->
+
+        <div class="col-md-4">
+                <!-- Monthly Newsletter -->
+              <div class="headline"><h2>Contact Us</h2></div> 
+                  <address class="md-margin-bottom-40">
+            25, Lorem Lis Street, Orange <br />
+            California, US <br />
+            Phone: 800 123 3456 <br />
+            Fax: 800 123 3456 <br />
+            Email: <a href="mailto:info@anybiz.com" class="">info@anybiz.com</a>
+                  </address>
+
+                  <!-- Stay Connected -->
+              <div class="headline"><h2>Stay Connected</h2></div> 
+                  <ul class="social-icons">
+                      <li><a href="#" data-original-title="Feed" class="social_rss"></a></li>
+                      <li><a href="#" data-original-title="Facebook" class="social_facebook"></a></li>
+                      <li><a href="#" data-original-title="Twitter" class="social_twitter"></a></li>
+                      <li><a href="#" data-original-title="Goole Plus" class="social_googleplus"></a></li>
+                      <li><a href="#" data-original-title="Pinterest" class="social_pintrest"></a></li>
+                      <li><a href="#" data-original-title="Linkedin" class="social_linkedin"></a></li>
+                      <li><a href="#" data-original-title="Vimeo" class="social_vimeo"></a></li>
+                  </ul>
+        </div><!--/col-md-4-->
+      </div><!--/row--> 
+    </div><!--/container--> 
+  </div><!--/footer-->  
+  <!--=== End Footer ===-->
+
+  <!--=== Copyright ===-->
+  <div class="copyright">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6">                      
+                  <p class="copyright-space">
+                      2013 &copy; Unify. ALL Rights Reserved. 
+                      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                  </p>
+              </div>
+              <div class="col-md-6">  
+                  <a href="index.html">
+                      <img id="logo-footer" src="/assets/logo2-default.png" class="pull-right" alt="" />
+                  </a>
+              </div>
+          </div><!--/row-->
+      </div><!--/container--> 
+  </div><!--/copyright--> 
+  <!--=== End Copyright ===-->
+  <%= yield :js %>
+  <!--[if lt IE 9]>
+      <script src="/assets/plugins/respond.js"></script>
+  <![endif]-->
+  
+</body>
+</html>

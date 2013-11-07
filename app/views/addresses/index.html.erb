@@ -1,0 +1,66 @@
+<% @page_title = "Addresses" %>
+
+<% content_for :css do %>
+  <style>
+    thead tr th, tbody tr td:nth-child(1), tbody tr td:nth-child(n+3) {text-align: center !important;}
+  </style>
+<% end %>
+
+<%if params[:notice] %>
+  <h4 class="alert alert-success"><%=params[:notice] %></h4>
+<%end%>
+
+<%if @addresses.any?%>
+  <div class="panel panel-grey margin-bottom-40">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="icon-user"></i> <%= current_user.full_name %></h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th style="width:3%;">Type</th>
+            <th style="width:40%">Address</th>
+            <th style="width:15%">City / State</th>
+            <th style="width:10%">Zip</th>
+            <th style="width:11%">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @addresses.each do |address| %>
+            <tr>
+              <td><%= address.address_type %></td>
+              <td><%= address.address %>
+                <br />
+                <%= address.address_1 %>
+              </td>
+              <td>
+                <%= address.city %>,
+                <% @states.each do |a| %>
+                  <% if a.id == address.state_id %>
+                    <%= a.state_abbrv %>
+                  <% end %>
+                <% end %>
+                
+              </td>
+              <td><%= address.zip %></td>
+              <td>
+                <%= link_to 'Edit', edit_address_path(address),class: "btn btn-default" %>
+                <%= link_to 'Delete', address, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<%else%>
+  <div class="col-md-12 md-margin-bottom-40 text-center">
+    <h4 class="well">No Address Found</h4>
+  </div>
+<%end%>
+<%= link_to new_address_path, class: "btn btn-success" do %>
+  New Address
+  <i class="icon-plus"></i>
+<% end %>

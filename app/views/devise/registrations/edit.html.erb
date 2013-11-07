@@ -1,0 +1,69 @@
+<% @page_title = "Edit Account" %>
+
+<% content_for :css do %>
+  <%= stylesheet_link_tag "/assets/css/pages/page_log_reg_v1" %>
+<% end %>
+
+<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, class: "reg-page" }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="reg-header">
+      <h2><%= @page_title%></h2>
+    </div>
+
+    <div class="form-group">
+    <%= f.text_field :first_name, class:"form-control", placeholder: "First Name" %></div>
+    
+    <div class="form-group">
+    <%= f.text_field :last_name, class:"form-control", placeholder: "Last Name" %>
+    </div>
+
+    <div class="form-group">
+    <%= f.text_field :phone_1, class:"form-control", placeholder: "Phone 1" %>
+    </div>
+
+    <div class="form-group">
+    <%= f.text_field :phone_2, class:"form-control", placeholder: "Phone_2 (Optional)" %>
+    </div>
+    
+    <div class="form-group">
+    <%= f.email_field :email, :autofocus => true, class: "form-control", placeholder: "E-Mail"  %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <label>
+          <i>(leave blank if you don't want to change it)</i>
+        </label>
+      </div>
+      <div class="col-sm-6">
+        <%= f.password_field :password, class:"form-control", placeholder: "Password" %>
+      </div>
+      <div class="col-sm-6">
+        <%= f.password_field :password_confirmation, class:"form-control", placeholder: "Password Confirmation" %>
+      </div>
+    </div>
+    <hr />
+    <div class="form-group">
+      <label>
+        <i>(we need your current password to confirm your changes)</i>
+      </label>
+      <%= f.password_field :current_password, class: "form-control", placeholder: "Current Password" %>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+      </div>
+      <div class="col-lg-6 text-right">
+        <%= f.submit "Update", class: "btn-u" %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn-link" %>
+</div>

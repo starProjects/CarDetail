@@ -1,0 +1,81 @@
+<% @page_title = "Contact Us" %>
+
+<% content_for :css do %>
+	<link rel="stylesheet" href="../assets/css/pages/page_contact.css">
+<% end %>
+
+<% content_for :js do %>
+	<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
+	<script type="text/javascript" src="../assets/plugins/gmap/gmap.js"></script>
+	<script type="text/javascript" src="../assets/js/pages/contact.js"></script>
+	<script type="text/javascript">
+    jQuery(document).ready(function() {
+      App.init();
+      App.initSliders();                
+      Contact.initMap();        
+    });
+	</script>
+<% end %>
+
+<!--=== Content Part ===-->
+<div class="container">     
+  <div class="row margin-bottom-30">
+    <div class="col-md-9 mb-margin-bottom-30">
+      <!-- Google Map -->
+      <div id="map" class="map map-box map-box-space margin-bottom-40">
+      </div><!---/map-->
+      <!-- End Google Map -->
+      <%= form_for(@contact, url: contact_index_path, defaults: { input_html: {id: 'form_contact' }}) do |f|%>
+
+        <div class="row margin-bottom-20">
+          <div class="col-md-7 col-md-offset-0">
+            <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+          </div>                
+        </div>
+        
+        <div class="row margin-bottom-20">
+          <div class="col-md-7 col-md-offset-0">
+            <%= f.text_field :email, class: "form-control", placeholder: "E-Mail" %>
+          </div>                
+        </div>
+        
+        <div class="row margin-bottom-20">
+          <div class="col-md-11 col-md-offset-0">
+            <%= f.text_area :message, class: "form-control", placeholder: "Message" %>
+          </div>                
+        </div>
+        
+        <p><button type="submit" class="btn-u">Send Message</button></p>
+
+      <% end %>
+    </div><!--/col-md-9-->
+      
+    <div class="col-md-3">
+      <!-- Contacts -->
+      <div class="headline"><h2>Contacts</h2></div>
+      <ul class="list-unstyled who margin-bottom-30">
+        <li><a href="#"><i class="icon-home"></i>5B Streat, City 50987 New Town US</a></li>
+        <li><a href="#"><i class="icon-envelope-alt"></i>info@example.com</a></li>
+        <li><a href="#"><i class="icon-phone-sign"></i>1(222) 5x86 x97x</a></li>
+        <li><a href="#"><i class="icon-globe"></i>http://www.example.com</a></li>
+      </ul>
+
+      <!-- Business Hours -->
+      <div class="headline"><h2>Business Hours</h2></div>
+      <ul class="list-unstyled margin-bottom-30">
+        <li><strong>Monday-Friday:</strong> 10am to 8pm</li>
+        <li><strong>Saturday:</strong> 11am to 3pm</li>
+        <li><strong>Sunday:</strong> Closed</li>
+      </ul>
+
+      <!-- Why we are? -->
+      <div class="headline"><h2>Why we are?</h2></div>
+      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.</p>
+      <ul class="list-unstyled">
+        <li><i class="icon-ok color-green"></i> Odio dignissimos ducimus</li>
+        <li><i class="icon-ok color-green"></i> Blanditiis praesentium volup</li>
+        <li><i class="icon-ok color-green"></i> Eos et accusamus</li>
+      </ul>
+    </div><!--/col-md-3-->
+  </div><!--/row-->
+</div>

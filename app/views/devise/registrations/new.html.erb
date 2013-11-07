@@ -1,0 +1,62 @@
+<% @page_title = "Register" %>
+
+<% content_for :css do %>
+  <%= stylesheet_link_tag "/assets/css/pages/page_log_reg_v1" %>
+<% end %>
+
+<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {class: "reg-page"}) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="reg-header">
+      <h2>Register a new account</h2>
+      <p>Already Signed Up? Click <a href="/login" class="color-green">Sign In</a> to login your account.</p>
+    </div>
+
+    <div class="form-group">
+    <%= f.text_field :first_name, class:"form-control", placeholder: "First Name" %></div>
+    
+    <div class="form-group">
+      <%= f.text_field :last_name, class:"form-control", placeholder: "Last Name" %>
+    </div>
+
+    <div class="form-group">
+    <%= f.text_field :phone_1, class:"form-control", placeholder: "Phone 1" %>
+    </div>
+
+    <div class="form-group">
+    <%= f.text_field :phone_2, class:"form-control", placeholder: "Phone 2 (Optional)" %>
+    </div>
+
+    <div class="form-group">
+    <%= f.email_field :email, class:"form-control", placeholder: "E-Mail" %>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.password_field :password, class:"form-control", placeholder: "Password" %>
+      </div>
+      <div class="col-sm-6">
+        <%= f.password_field :password_confirmation, class:"form-control", placeholder: "Password Confirmation" %>
+      </div>
+    </div>
+    
+    <hr>
+    
+    <div class="row">
+      <div class="col-lg-6">
+        <label class="checkbox">  
+          <input type="checkbox"> 
+          I read <a href="page_terms.html" class="color-green">Terms and Conditions</a>
+        </label>                        
+      </div>
+      <div class="col-lg-6 text-right">
+        <%= f.submit "Sign up", class: "btn-u" %>
+      </div>
+    </div>
+
+    <br />
+    <%= render "devise/shared/links" %>
+  <% end %>
+</div>
+
+

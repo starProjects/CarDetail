@@ -1,0 +1,70 @@
+                   Prefix Verb   URI Pattern                     Controller#Action
+           admin_password POST   /admins/password(.:format)      devise/passwords#create
+       new_admin_password GET    /admins/password/new(.:format)  devise/passwords#new
+      edit_admin_password GET    /admins/password/edit(.:format) devise/passwords#edit
+                          PATCH  /admins/password(.:format)      devise/passwords#update
+                          PUT    /admins/password(.:format)      devise/passwords#update
+cancel_admin_registration GET    /admins/cancel(.:format)        devise/registrations#cancel
+       admin_registration POST   /admins(.:format)               devise/registrations#create
+   new_admin_registration GET    /admins/sign_up(.:format)       devise/registrations#new
+  edit_admin_registration GET    /admins/edit(.:format)          devise/registrations#edit
+                          PATCH  /admins(.:format)               devise/registrations#update
+                          PUT    /admins(.:format)               devise/registrations#update
+                          DELETE /admins(.:format)               devise/registrations#destroy
+         new_user_session GET    /users/sign_in(.:format)        devise/sessions#new
+             user_session POST   /users/sign_in(.:format)        devise/sessions#create
+     destroy_user_session DELETE /users/sign_out(.:format)       devise/sessions#destroy
+            user_password POST   /users/password(.:format)       devise/passwords#create
+        new_user_password GET    /users/password/new(.:format)   devise/passwords#new
+       edit_user_password GET    /users/password/edit(.:format)  devise/passwords#edit
+                          PATCH  /users/password(.:format)       devise/passwords#update
+                          PUT    /users/password(.:format)       devise/passwords#update
+ cancel_user_registration GET    /users/cancel(.:format)         devise/registrations#cancel
+        user_registration POST   /users(.:format)                devise/registrations#create
+    new_user_registration GET    /users/sign_up(.:format)        devise/registrations#new
+   edit_user_registration GET    /users/edit(.:format)           devise/registrations#edit
+                          PATCH  /users(.:format)                devise/registrations#update
+                          PUT    /users(.:format)                devise/registrations#update
+                          DELETE /users(.:format)                devise/registrations#destroy
+               home_index GET    /home(.:format)                 home#index
+              about_index GET    /about(.:format)                about#index
+            contact_index GET    /contact(.:format)              contact#index
+                          POST   /contact(.:format)              contact#create
+              new_contact GET    /contact/new(.:format)          contact#new
+             edit_contact GET    /contact/:id/edit(.:format)     contact#edit
+                  contact GET    /contact/:id(.:format)          contact#show
+                          PATCH  /contact/:id(.:format)          contact#update
+                          PUT    /contact/:id(.:format)          contact#update
+                          DELETE /contact/:id(.:format)          contact#destroy
+                addresses GET    /addresses(.:format)            addresses#index
+                          POST   /addresses(.:format)            addresses#create
+              new_address GET    /addresses/new(.:format)        addresses#new
+             edit_address GET    /addresses/:id/edit(.:format)   addresses#edit
+                  address GET    /addresses/:id(.:format)        addresses#show
+                          PATCH  /addresses/:id(.:format)        addresses#update
+                          PUT    /addresses/:id(.:format)        addresses#update
+                          DELETE /addresses/:id(.:format)        addresses#destroy
+                 products GET    /products(.:format)             products#index
+                          POST   /products(.:format)             products#create
+              new_product GET    /products/new(.:format)         products#new
+             edit_product GET    /products/:id/edit(.:format)    products#edit
+                  product GET    /products/:id(.:format)         products#show
+                          PATCH  /products/:id(.:format)         products#update
+                          PUT    /products/:id(.:format)         products#update
+                          DELETE /products/:id(.:format)         products#destroy
+          dashboard_index GET    /dashboard(.:format)            dashboard#index
+                          POST   /dashboard(.:format)            dashboard#create
+            new_dashboard GET    /dashboard/new(.:format)        dashboard#new
+           edit_dashboard GET    /dashboard/:id/edit(.:format)   dashboard#edit
+                dashboard GET    /dashboard/:id(.:format)        dashboard#show
+                          PATCH  /dashboard/:id(.:format)        dashboard#update
+                          PUT    /dashboard/:id(.:format)        dashboard#update
+                          DELETE /dashboard/:id(.:format)        dashboard#destroy
+        new_admin_session GET    /admins/sign_in(.:format)       devise/sessions#new
+            admin_session POST   /sessions/admin(.:format)       devise/sessions#create
+    destroy_admin_session DELETE /admins/sign_out(.:format)      devise/sessions#destroy
+                 register GET    /register(.:format)             devise/registrations#new
+                    login GET    /login(.:format)                devise/sessions#new
+                   logout GET    /logout(.:format)               devise/sessions#destroy
+             profile_edit GET    /profile/edit(.:format)         devise/registrations#edit
+                     root GET    /                               home#index
