@@ -12,11 +12,7 @@
   <% end %>
 
   <div class="form-group">
-    <select id="address_address_type" name="address[address_type]" class="form-control">
-      <option>Select Address Type</option>
-      <option value="Home">Home</option>
-      <option value="Shipping">Shipping</option>
-    </select>
+    <%= f.text_field :address_type, class:"form-control", placeholder: "Address Type (Home, Shipping)", :autofocus => true, required: true %>
   </div>
 
   <div class="form-group">
@@ -31,11 +27,11 @@
     <%= f.text_field :city, class:"form-control", placeholder: "City", required: true %>
   </div>
 
-  <div class="form-group col-xs-3" style="padding-left:0px">
+  <div class="form-group col-md-3" style="padding-left:0px">
     <%= f.collection_select(:state_id, State.where("state_active", true), :id, :state_abbrv, {:prompt => "Select"}, :class => "form-control", required: true) %>
   </div>
 
-  <div class="form-group col-xs-3">
+  <div class="form-group col-md-3">
     <%= f.text_field :zip, class:"form-control", placeholder: "ZIP", required: true %>
   </div>
   <br />
@@ -44,10 +40,10 @@
   <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="col-xs-12" style="padding-left:0px">
     <div class="actions">
-      <%= f.submit class: "btn btn-success pull-left" do %>
+      <%= link_to 'Back', addresses_path, class: "btn btn-warning pull-left" %>
+      <%= f.submit class: "btn btn-success pull-right" do %>
         <i class="icon-plus"></i>
       <% end %>
     </div>
   </div>
-
 <% end %>

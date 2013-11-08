@@ -38,9 +38,8 @@
               <% if user_signed_in? %>
                 <li class="devider"></li>   
                 <li>
-                  <%= link_to "Welcome back #{current_user.email}", dashboard_index_path %>
-                    <a href="logout">(Not You, Logout?)
-                    </a>
+                  <%= link_to "account", dashboard_index_path %>
+                  <%= link_to "(Logout)", destroy_user_session_path, method: :delete %>
                 </li>
               <% else %>
                 <li class="devider"></li>   

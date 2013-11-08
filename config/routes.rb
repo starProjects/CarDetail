@@ -1,6 +1,5 @@
 CarDetail::Application.routes.draw do
 
-  devise_for :admins, :skip => [:sessions]
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -10,22 +9,15 @@ CarDetail::Application.routes.draw do
 
   resources :home, only: [:index] 
   resources :about, only: [:index] 
-  resources :contact
+  resources :contact, only: [:index, :create] 
   resources :addresses
   resources :products
   resources :dashboard
 
-  as :admin do
-    get 'admins/sign_in' => 'devise/sessions#new', :as => :new_admin_session
-    post 'sessions/admin' => 'devise/sessions#create', :as => :admin_session
-    delete 'admins/sign_out' => 'devise/sessions#destroy', :as => :destroy_admin_session
-  end
-
   as :user do
-    get '/register', to: 'devise/registrations#new'
-    get '/login', to: 'devise/sessions#new'
-    get '/logout', to: 'devise/sessions#destroy'
-    get '/profile/edit', to: 'devise/registrations#edit'
+    get 'register', to: 'devise/registrations#new'
+    get 'login', to: 'devise/sessions#new'
+    get 'profile/edit', to: 'devise/registrations#edit'
   end
 
   root :to => "home#index"

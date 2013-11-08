@@ -13,9 +13,7 @@ class ContactController < ApplicationController
     respond_to do |format|
       if @contact.valid? 
         UserMailer.contact_form(@contact).deliver
-        format.html do
-          redirect_to contact_index_path, notice: "Message sent"
-        end
+        format.html { redirect_to action: "index", notice: "Message sent" }
       else
         format.html { render action: "index" }
       end 
